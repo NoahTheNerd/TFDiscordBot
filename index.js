@@ -29,6 +29,7 @@ client.on('messageCreate', (message) => {
 
             case "l":
             case "list":
+                if (isServOn == false) { return message.channel.send("Server is offline") }
                 axios.get('http://mc-02.infra.totalfreedom.me:25600/list?json=true').then(res => {
                     let listFix = res.data.owners.concat(res.data.executives, res.data.senior_admins, res.data.admins, res.data.developers, res.data.master_builders, res.data.operators, res.data.impostors)
                     message.channel.send(`**Players online:** ${res.data.online}/${res.data.max}\n\`\`\`${listFix.join(', ').substring(0, listFix.join(', ').length - 2)}\`\`\``)})
