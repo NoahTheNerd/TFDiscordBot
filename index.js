@@ -22,7 +22,7 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', (message) => {
-    if (!message.channel.id.toLowerCase==config.channelid.toLowerCase) return
+    if (!message.channel.id == config.channelid) return
     if (message.content.startsWith(config.prefix)) {
         switch (message.content.replace(config.prefix, '')) {
 
