@@ -22,10 +22,9 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', (message) => {
-    if (!message.channel.id==config.channelid) return
+    if (!message.channel.id.toLowerCase==config.channelid.toLowerCase) return
     if (message.content.startsWith(config.prefix)) {
         switch (message.content.replace(config.prefix, '')) {
-
 
             case "l":
             case "list":
@@ -34,8 +33,6 @@ client.on('messageCreate', (message) => {
                     let listFix = res.data.owners.concat(res.data.executives, res.data.senior_admins, res.data.admins, res.data.developers, res.data.master_builders, res.data.operators, res.data.impostors)
                     message.channel.send(`**Players online:** ${res.data.online}/${res.data.max}\n\`\`\`${listFix.join(', ').substring(0, listFix.join(', ').length - 2)}\`\`\``)})
             break;
-
-
 
         }
     }
